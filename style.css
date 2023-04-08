@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #FFFFF7;
+    min-width: 610px;
+}
+
+/* Navigation Bar */
+.nav_bar {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-family: 'Rajdhani', sans-serif;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    min-width: 610px;
+}
+
+
+#about {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+#con {
+    margin-right: 2rem;
+}
+
+.content {
+    text-decoration: none;
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    border-radius: 3rem;
+    color: white;
+    background-color: black;
+    box-shadow: 0rem 0.2rem 0.2rem 0rem gray;
+}
+
+.content:hover {
+    border-radius: 2rem;
+    color: white;
+    background-color: gray;
+}
+
+/* Line below nav bar */
+.line {
+    opacity: 0.3;
+}
+
+/* Profile Image */
+#pic img:hover {
+    transform: rotateX(20deg);
+}
+
+#pic img {
+    height: 20rem;
+    width: 20rem;
+    border-radius: 10rem;
+    box-shadow: 0rem 0.5rem 0.3rem 0rem gray;
+}
+
+#pic {
+    margin: 0;
+    text-align: center;
+    margin-top: 9%;
+}
+
+/* Information */
+.info {
+    font-family: Cambria;
+    font-size: 1.25rem;
+    color: black;
+    letter-spacing: 0.1rem;
+}
+
+.profile {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.icons a {
+    text-decoration: none;
+}
+
+.icons img:hover {
+    transform: rotate(20deg);
+}
+
+.icons img {
+    text-decoration: none;
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-left: 2rem;
+    margin-right: 0.5rem;
+}
+
+.icons {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* Contact Me Decription */
+.main {
+    margin: 2% 20% 2% 20%;
+}
+
+#contact {
+    font-size: 3rem;
+}
+
+.desc {
+    text-align: left;
+    font-family: Rajdhani;
+    letter-spacing: 0.1rem;
+}
+
+#contact_msg {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* Contact Me Form */
+
+.name_email input {
+    width: 47%;
+    height: 2rem;
+    border: 0.01rem solid gray;
+    border-radius: 0.3rem;
+    padding: 0.4rem 0rem 0.4rem 0.7rem;
+}
+
+.msg {
+    margin-top: 1.2rem;
+}
+
+.msg textarea {
+    width: 96%;
+    height: 12rem;
+    border: 0.01rem solid gray;
+    border-radius: 0.3rem;
+    padding-left: 0.8rem;
+    padding-top: 0.8rem;
+}
+
+/* Submit Button */
+.submit {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.submit input {
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif;
+    padding: 0.8rem 1.8rem 0.8rem 1.8rem;
+    font-size: 1rem;
+    border-radius: 3rem;
+    color: white;
+    background-color: black;
+    box-shadow: 0rem 0.2rem 0.2rem 0rem gray;
+    margin-bottom: 1.2rem;
+}
+
+.submit:hover {
+    transform: translateY(-0.1rem);
+}
+
+/* Icons on Contact form */
+.main a {
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+.icons1 img:hover {
+    transform: rotate(-20deg);
+}
+
+.icons1 img {
+    text-decoration: none;
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-left: 3rem;
+}
+
+.icons1 {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* About Page */
+.about_body {
+    margin: 2% 20% 2% 20%;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+#greet {
+    opacity: 0.65;
+}
+
+#about_role {
+    font-style: italic;
+}
+
+.about_body a {
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+.about_body p {
+    margin-top: 1.3rem;
+    margin-bottom: 1.3rem;
+    font-size: 1.3rem;
+}
+
+#stack {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.tech_img img {
+    height: 2.9rem;
+    width: auto;
+    padding-left: 0.5rem;
+}
