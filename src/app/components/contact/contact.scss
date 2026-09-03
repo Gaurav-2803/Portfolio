@@ -1,0 +1,220 @@
+.contact {
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+
+  // Ambient glow
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__cta-card {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient-primary);
+    }
+  }
+
+  &__cta-icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.4));
+  }
+
+  &__cta-title {
+    font-family: var(--font-brand);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  &__cta-text {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  &__cta-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+
+    strong {
+      color: var(--accent-cyan);
+    }
+  }
+
+  &__email-btn,
+  &__resume-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-family: var(--font-brand);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+
+    mat-icon {
+      font-size: 20px;
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  &__email-btn {
+    background: var(--gradient-primary);
+    color: #000;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.25);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 212, 255, 0.45);
+    }
+  }
+
+  &__resume-btn {
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    color: var(--accent-cyan);
+    background: transparent;
+
+    &:hover {
+      background: rgba(0, 212, 255, 0.08);
+      border-color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.contact-link-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--link-color, rgba(0, 212, 255, 0.3));
+    box-shadow: 0 8px 30px color-mix(in srgb, var(--link-color, #00d4ff) 12%, transparent);
+    transform: translateX(4px);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__icon-wrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--link-color, #00d4ff) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--link-color, #00d4ff) 25%, transparent);
+    flex-shrink: 0;
+
+    mat-icon {
+      color: var(--link-color, var(--accent-cyan));
+      font-size: 20px;
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  &__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+  }
+
+  &__label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__value {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.2s;
+  }
+
+  &:hover &__value {
+    color: var(--link-color, var(--accent-cyan));
+  }
+
+  &__arrow {
+    color: var(--text-muted);
+    font-size: 18px;
+    height: 18px;
+    width: 18px;
+    transition: transform 0.2s, color 0.2s;
+    flex-shrink: 0;
+  }
+
+  &:hover &__arrow {
+    transform: translateX(4px);
+    color: var(--link-color, var(--accent-cyan));
+  }
+}
+
+@media (max-width: 900px) {
+  .contact {
+    &__layout {
+      grid-template-columns: 1fr;
+    }
+  }
+}

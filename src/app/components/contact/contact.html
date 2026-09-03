@@ -1,0 +1,72 @@
+<section class="section contact" id="contact">
+  <div class="section__container">
+    <div class="section__header">
+      <span class="section-label">// let's talk</span>
+      <h2>Get In <span>Touch</span></h2>
+    </div>
+
+    <div class="contact__layout">
+      <!-- Left: CTA Text -->
+      <div class="contact__cta">
+        <div class="contact__cta-card glass-card">
+          <div class="contact__cta-icon">💬</div>
+          <h3 class="contact__cta-title">Open to Opportunities</h3>
+          <p class="contact__cta-text">
+            I'm always excited to connect with fellow developers, collaborate on interesting
+            projects, or explore new career opportunities. Whether you have a project in mind,
+            want to discuss tech, or just want to say hi — my inbox is open!
+          </p>
+          <p class="contact__cta-sub">
+            I typically respond within <strong>24 hours</strong>.
+          </p>
+
+          <a
+            href="mailto:gauravagrawal2833@gmail.com"
+            class="contact__email-btn"
+            id="contact-say-hello"
+          >
+            <mat-icon>send</mat-icon>
+            Say Hello!
+          </a>
+
+          <a
+            href="Resume.pdf"
+            download
+            target="_blank"
+            class="contact__resume-btn"
+            id="contact-download-resume"
+          >
+            <mat-icon>download</mat-icon>
+            Download Résumé
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Contact Links -->
+      <div class="contact__links">
+        <div
+          *ngFor="let link of contactLinks"
+          class="contact-link-card glass-card"
+          [style.--link-color]="link.color"
+        >
+          <a
+            [href]="link.href"
+            [target]="link.href.startsWith('mailto') || link.href.startsWith('tel') ? '_self' : '_blank'"
+            rel="noopener noreferrer"
+            class="contact-link-card__inner"
+            [id]="link.id"
+          >
+            <div class="contact-link-card__icon-wrapper">
+              <mat-icon>{{ link.icon }}</mat-icon>
+            </div>
+            <div class="contact-link-card__info">
+              <span class="contact-link-card__label">{{ link.label }}</span>
+              <span class="contact-link-card__value">{{ link.value }}</span>
+            </div>
+            <mat-icon class="contact-link-card__arrow">arrow_forward</mat-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

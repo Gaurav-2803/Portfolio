@@ -1,0 +1,47 @@
+<nav class="navbar" [class.scrolled]="scrolled" [class.mobile-open]="mobileOpen">
+  <div class="navbar__container">
+    <!-- Logo -->
+    <a class="navbar__logo" (click)="scrollTo('#hero')" role="button" tabindex="0" id="nav-logo">
+      <span class="logo-bracket">&lt;</span>
+      <span class="logo-name">GA</span>
+      <span class="logo-bracket">/&gt;</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="navbar__links" [class.open]="mobileOpen">
+      <a
+        *ngFor="let item of navItems; let i = index"
+        class="navbar__link"
+        [id]="'nav-' + item.label.toLowerCase()"
+        (click)="scrollTo(item.href)"
+        [style.animation-delay]="i * 0.05 + 's'"
+      >
+        <span class="link-num">0{{ i + 1 }}.</span>
+        {{ item.label }}
+      </a>
+      <a
+        class="navbar__resume-btn"
+        href="Resume.pdf"
+        download
+        target="_blank"
+        id="nav-resume"
+      >
+        <mat-icon>download</mat-icon>
+        Resume
+      </a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button
+      class="navbar__hamburger"
+      (click)="mobileOpen = !mobileOpen"
+      [class.active]="mobileOpen"
+      aria-label="Toggle menu"
+      id="nav-hamburger"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,120 @@
+<section class="hero" id="hero">
+  <!-- Ambient background glows -->
+  <div class="hero__glow hero__glow--1"></div>
+  <div class="hero__glow hero__glow--2"></div>
+  <div class="hero__glow hero__glow--3"></div>
+
+  <div class="hero__container">
+    <!-- Left Content -->
+    <div class="hero__content">
+      <div class="hero__greeting">
+        <span class="hero__greeting-line"></span>
+        <span class="hero__greeting-text">Hello, World! I'm</span>
+      </div>
+
+      <h1 class="hero__name" id="hero-name">
+        Gaurav<br>
+        <span class="hero__name--accent">Agrawal</span>
+      </h1>
+
+      <div class="hero__role">
+        <span class="hero__cursor-text">{{ displayedText }}</span>
+        <span class="hero__cursor">|</span>
+      </div>
+
+      <p class="hero__description">
+        Software Engineer at <strong>TCS</strong> · Building scalable systems with
+        <span class="highlight">Spring Boot</span>, <span class="highlight">Angular</span>,
+        <span class="highlight">Docker</span> & <span class="highlight">AWS</span>.
+        Star of the Month @ TCS (August 2026). On-the-Spot Award Winner.
+      </p>
+
+      <div class="hero__actions">
+        <button
+          mat-raised-button
+          class="hero__btn hero__btn--primary"
+          (click)="scrollToProjects()"
+          id="hero-view-projects"
+        >
+          <mat-icon>rocket_launch</mat-icon>
+          View Projects
+        </button>
+        <button
+          mat-stroked-button
+          class="hero__btn hero__btn--secondary"
+          (click)="scrollToContact()"
+          id="hero-contact-me"
+        >
+          <mat-icon>mail</mat-icon>
+          Contact Me
+        </button>
+      </div>
+
+      <!-- Social Links -->
+      <div class="hero__socials">
+        <a
+          *ngFor="let link of socialLinks"
+          [href]="link.url"
+          target="_blank"
+          class="hero__social-link"
+          [matTooltip]="link.label"
+          matTooltipPosition="above"
+          [id]="'hero-social-' + link.icon"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <path [attr.d]="link.svgPath"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Profile image -->
+    <div class="hero__image-wrapper">
+      <div class="hero__image-ring hero__image-ring--outer"></div>
+      <div class="hero__image-ring hero__image-ring--inner"></div>
+      <div class="hero__image-container">
+        <img
+          src="profile.jpg"
+          alt="Gaurav Agrawal"
+          class="hero__profile-img"
+          loading="eager"
+        />
+        <div class="hero__image-overlay"></div>
+      </div>
+      <!-- Floating badges -->
+      <div class="hero__badge hero__badge--tcs">
+        <span class="badge-icon">🏆</span>
+        <div>
+          <div class="badge-title">Star of the Month</div>
+          <div class="badge-sub">TCS · Aug 2026</div>
+        </div>
+      </div>
+      <div class="hero__badge hero__badge--aws">
+        <span class="badge-icon">☁️</span>
+        <div>
+          <div class="badge-title">AWS Certified</div>
+          <div class="badge-sub">Developer Associate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Row -->
+  <div class="hero__stats">
+    <div class="hero__stats-container">
+      <div *ngFor="let stat of stats" class="hero__stat-item">
+        <div class="hero__stat-value">{{ stat.value }}</div>
+        <div class="hero__stat-label">{{ stat.label }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll-indicator">
+    <div class="hero__scroll-mouse">
+      <div class="hero__scroll-wheel"></div>
+    </div>
+    <span>Scroll Down</span>
+  </div>
+</section>

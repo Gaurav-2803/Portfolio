@@ -1,0 +1,68 @@
+<section class="section experience" id="experience">
+  <div class="section__container">
+    <div class="section__header">
+      <span class="section-label">// work history</span>
+      <h2>Work <span>Experience</span></h2>
+    </div>
+
+    <div class="experience__timeline">
+      <div
+        *ngFor="let exp of experiences; let i = index"
+        class="experience__item"
+        [style.--exp-accent]="exp.accent"
+        [id]="'exp-' + i"
+      >
+        <!-- Timeline dot -->
+        <div class="experience__dot">
+          <span>{{ exp.logo }}</span>
+        </div>
+
+        <!-- Card -->
+        <div class="experience__card glass-card">
+          <!-- Card top bar -->
+          <div class="experience__card-accent-bar"></div>
+
+          <div class="experience__card-header">
+            <div class="experience__role-info">
+              <h3 class="experience__role">{{ exp.role }}</h3>
+              <p class="experience__company">{{ exp.company }}</p>
+            </div>
+            <div class="experience__meta">
+              <div class="experience__period">
+                <mat-icon>schedule</mat-icon>
+                {{ exp.period }}
+              </div>
+              <div class="experience__location">
+                <mat-icon>location_on</mat-icon>
+                {{ exp.location }}
+              </div>
+              <span class="experience__type-badge">{{ exp.type }}</span>
+            </div>
+          </div>
+
+          <!-- Awards -->
+          <div class="experience__awards" *ngIf="exp.awards?.length">
+            <div *ngFor="let award of exp.awards" class="experience__award">
+              {{ award }}
+            </div>
+          </div>
+
+          <!-- Highlights -->
+          <ul class="experience__highlights">
+            <li *ngFor="let h of exp.highlights" class="experience__highlight">
+              <span class="experience__highlight-bullet">▸</span>
+              {{ h }}
+            </li>
+          </ul>
+
+          <!-- Tags -->
+          <div class="experience__tags">
+            <span *ngFor="let tag of exp.tags" class="experience__tag">
+              {{ tag }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

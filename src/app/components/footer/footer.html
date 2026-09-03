@@ -1,0 +1,41 @@
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__divider"></div>
+
+    <div class="footer__content">
+      <!-- Logo -->
+      <div class="footer__logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-name">GA</span>
+        <span class="logo-bracket">/&gt;</span>
+      </div>
+
+      <!-- Nav -->
+      <nav class="footer__nav">
+        <a
+          *ngFor="let item of navItems"
+          class="footer__nav-link"
+          (click)="scrollTo(item)"
+          role="button"
+          tabindex="0"
+          [id]="'footer-nav-' + item.toLowerCase()"
+        >
+          {{ item }}
+        </a>
+      </nav>
+
+      <!-- Right: Copyright -->
+      <p class="footer__copy">
+        Designed & Built by
+        <a href="https://github.com/Gaurav-2803" target="_blank" rel="noopener noreferrer" id="footer-github-link">
+          Gaurav Agrawal
+        </a>
+        &copy; {{ year }}
+      </p>
+    </div>
+
+    <p class="footer__made-with">
+      Built with <span class="heart">♥</span> using Angular + Angular Material
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,233 @@
+.about {
+  background: var(--bg-secondary);
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  // Bio Card
+  &__bio-card {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-primary);
+    }
+  }
+
+  &__avatar {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+
+    img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(0, 212, 255, 0.4);
+    }
+
+    &-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px dashed rgba(0, 212, 255, 0.3);
+      animation: spin-slow 8s linear infinite;
+    }
+  }
+
+  &__bio-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  &__bio-name {
+    font-family: var(--font-brand);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  &__bio-title {
+    font-size: 0.85rem;
+    color: var(--accent-cyan);
+    font-family: var(--font-mono);
+    letter-spacing: 0.03em;
+  }
+
+  &__bio-location {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+
+    mat-icon {
+      font-size: 16px;
+      height: 16px;
+      width: 16px;
+      color: var(--accent-cyan);
+    }
+  }
+
+  &__bio-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    text-align: left;
+
+    strong {
+      color: var(--accent-cyan);
+    }
+  }
+
+  &__highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  &__highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 8px 12px;
+    border-left: 2px solid rgba(0, 212, 255, 0.3);
+    text-align: left;
+
+    .about__highlight-icon {
+      font-size: 1rem;
+    }
+  }
+
+  // Skills
+  &__skills-title {
+    font-family: var(--font-brand);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+  }
+
+  &__skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  &__skill-card {
+    padding: 20px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: var(--card-accent, rgba(0, 212, 255, 0.3));
+      box-shadow: 0 0 20px color-mix(in srgb, var(--card-accent, #00d4ff) 20%, transparent);
+      transform: translateY(-4px);
+    }
+  }
+
+  &__skill-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  &__skill-icon {
+    font-size: 1.2rem;
+  }
+
+  &__skill-category {
+    font-family: var(--font-brand);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  &__skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  &__chip {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    transition: all 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+      background: rgba(0, 212, 255, 0.08);
+      border-color: rgba(0, 212, 255, 0.3);
+      color: var(--accent-cyan);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .about {
+    &__layout {
+      grid-template-columns: 1fr;
+    }
+
+    &__skills-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    &__skills-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    &__skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

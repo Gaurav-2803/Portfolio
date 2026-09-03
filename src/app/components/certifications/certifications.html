@@ -1,0 +1,104 @@
+<section class="section certifications" id="certifications">
+  <div class="section__container">
+    <div class="section__header">
+      <span class="section-label">// credentials & education</span>
+      <h2>Certifications & <span>Education</span></h2>
+    </div>
+
+    <div class="certifications__layout">
+      <!-- Certifications -->
+      <div class="certifications__col">
+        <h3 class="certifications__col-title">
+          <mat-icon>workspace_premium</mat-icon>
+          Certifications
+        </h3>
+
+        <div
+          *ngFor="let cert of certifications"
+          class="cert-card glass-card"
+          [style.--cert-color]="cert.color"
+        >
+          <div class="cert-card__accent-bar"></div>
+          <div class="cert-card__inner">
+            <div class="cert-card__header">
+              <div class="cert-card__logo">{{ cert.logo }}</div>
+              <div class="cert-card__info">
+                <h4 class="cert-card__name">{{ cert.name }}</h4>
+                <p class="cert-card__issuer">{{ cert.issuer }}</p>
+              </div>
+            </div>
+
+            <div class="cert-card__credential">
+              <mat-icon>verified</mat-icon>
+              <span class="cert-card__credential-label">Credential ID:</span>
+              <code class="cert-card__credential-id">{{ cert.credentialId }}</code>
+            </div>
+
+            <div class="cert-card__skills">
+              <span *ngFor="let skill of cert.skills" class="cert-card__skill">
+                {{ skill }}
+              </span>
+            </div>
+
+            <a
+              [href]="cert.verifyUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cert-card__verify-btn"
+              id="cert-verify-aws"
+            >
+              <mat-icon>open_in_new</mat-icon>
+              Verify Certificate
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="certifications__col">
+        <h3 class="certifications__col-title">
+          <mat-icon>school</mat-icon>
+          Education
+        </h3>
+
+        <div
+          *ngFor="let edu of education"
+          class="edu-card glass-card"
+        >
+          <div class="edu-card__accent-bar"></div>
+          <div class="edu-card__inner">
+            <div class="edu-card__header">
+              <div class="edu-card__degree-icon">🎓</div>
+              <div>
+                <h4 class="edu-card__degree">{{ edu.degree }}</h4>
+                <p class="edu-card__institution">{{ edu.institution }}</p>
+              </div>
+            </div>
+
+            <div class="edu-card__meta">
+              <div class="edu-card__meta-item">
+                <mat-icon>schedule</mat-icon>
+                {{ edu.period }}
+              </div>
+              <div class="edu-card__meta-item">
+                <mat-icon>location_on</mat-icon>
+                {{ edu.location }}
+              </div>
+              <div class="edu-card__cgpa">
+                <mat-icon>grade</mat-icon>
+                CGPA: <strong>{{ edu.cgpa }}</strong>
+              </div>
+            </div>
+
+            <div class="edu-card__achievements">
+              <p class="edu-card__achievements-title">Achievements & Leadership</p>
+              <ul>
+                <li *ngFor="let a of edu.achievements">{{ a }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
