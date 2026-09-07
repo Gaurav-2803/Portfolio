@@ -31,11 +31,17 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {}
 
-  scrollTo(href: string) {
+  scrollTo(href: string, event?: MouseEvent) {
+    event?.preventDefault();
     this.mobileOpen = false;
     const el = document.querySelector(href);
+
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // A navigation click should take priority over an in-progress wheel glide.
+      window.dispatchEvent(new Event('portfolio:cancel-wheel-scroll'));
+      const navbarOffset = 80;
+      const top = el.getBoundingClientRect().top + window.scrollY - navbarOffset;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
     }
   }
 }

@@ -69,7 +69,9 @@ $portfolio-primary: mat.define-theme((
 }
 
 html {
-  scroll-behavior: smooth;
+  // Native smooth scrolling only affects anchor/API jumps. Wheel scrolling is
+  // handled in App so it stays continuous instead of moving in discrete steps.
+  scroll-behavior: auto;
   font-size: 16px;
 }
 

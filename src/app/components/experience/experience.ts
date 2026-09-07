@@ -21,7 +21,7 @@ export interface Experience {
   standalone: true,
   imports: [CommonModule, MatIconModule, MatChipsModule],
   templateUrl: './experience.html',
-  styleUrls: ['./experience.scss']
+  styleUrls: ['./experience.scss'],
 })
 export class ExperienceComponent {
   experiences: Experience[] = [
@@ -42,9 +42,18 @@ export class ExperienceComponent {
         'Optimized 50+ SQL queries and converted COBOL compression logic to SQL — reduced report execution time by 90%.',
         'Implemented 20+ Spring Boot + Apache Camel APIs to expose legacy COBOL services for modern integrations.',
         'Owned CI/CD pipeline with 5–10 deployments/week, improving release reliability and turnaround time.',
-        'Resolved 10+ production issues/month and conducted code reviews.'
+        'Resolved 10+ production issues/month and conducted code reviews.',
       ],
-      tags: ['Spring Boot', 'Apache Camel', 'Socket.IO', 'Docker', 'SQL', 'CI/CD', 'COBOL', 'Microservices']
+      tags: [
+        'Spring Boot',
+        'Apache Camel',
+        'Socket.IO',
+        'Docker',
+        'SQL',
+        'CI/CD',
+        'COBOL',
+        'Microservices',
+      ],
     },
     {
       role: 'Content Writer',
@@ -56,10 +65,10 @@ export class ExperienceComponent {
       accent: '#10b981',
       highlights: [
         'Authored 20+ technical articles on Python, FastAPI, AWS, and Docker.',
-        'Generated 230K+ total article views, reaching a global developer audience.',
+        'Generated 300K+ total article views, reaching a global developer audience.',
         'Broke down complex engineering topics into accessible, beginner-friendly content.',
       ],
-      tags: ['Python', 'FastAPI', 'AWS', 'Docker', 'Technical Writing']
+      tags: ['Python', 'FastAPI', 'AWS', 'Docker', 'Technical Writing'],
     },
     {
       role: 'Python Developer',
@@ -75,7 +84,7 @@ export class ExperienceComponent {
         'Collaborated in Agile teams (Git, Docker), contributing to weekly releases.',
         'Gained exposure to MongoDB for data persistence.',
       ],
-      tags: ['Python', 'Flask', 'Angular', 'LaTeX', 'MongoDB', 'Docker', 'OOP', 'Agile']
-    }
+      tags: ['Python', 'Flask', 'Angular', 'LaTeX', 'MongoDB', 'Docker', 'OOP', 'Agile'],
+    },
   ];
 }
