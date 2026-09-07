@@ -7,6 +7,10 @@ services:
     container_name: bygaurav-portfolio
 
     ports:
-      - "8080:80"
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - /etc/nginx/ssl:/etc/nginx/ssl:ro
 
     restart: unless-stopped
