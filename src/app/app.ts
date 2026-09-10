@@ -44,83 +44,67 @@ import { FooterComponent } from './components/footer/footer';
 export class App implements AfterViewInit, OnDestroy {
   private targetScrollY = 0;
   private animationFrame?: number;
-  private isAnimating = false;
+  private isGliding = false;
   private readonly reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   private readonly onWheel = (event: WheelEvent) => {
-    // Preserve browser zooming and horizontal gestures.
     if (event.ctrlKey || event.metaKey || !event.deltaY || this.reducedMotion.matches) {
       return;
     }
 
     event.preventDefault();
-
-    const delta = this.getWheelDelta(event);
+    const delta = event.deltaMode === WheelEvent.DOM_DELTA_LINE
+      ? event.deltaY * 16
+      : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+        ? event.deltaY * window.innerHeight
+        : event.deltaY;
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     this.targetScrollY = Math.max(0, Math.min(maxScroll, this.targetScrollY + delta));
 
-    if (!this.isAnimating) {
-      this.isAnimating = true;
-      this.animateScroll();
+    if (!this.isGliding) {
+      this.isGliding = true;
+      document.body.classList.add('is-wheel-scrolling');
+      this.glide();
     }
   };
 
-  private readonly onNativeScroll = () => {
-    // Keep keyboard, touch, scrollbar dragging, and anchor navigation in sync.
-    if (!this.isAnimating) {
+  private readonly onScroll = () => {
+    if (!this.isGliding) {
       this.targetScrollY = window.scrollY;
     }
   };
 
-  private readonly cancelSmoothScroll = () => {
+  private readonly cancelGlide = () => {
     this.targetScrollY = window.scrollY;
-    this.isAnimating = false;
-
-    if (this.animationFrame) {
-      cancelAnimationFrame(this.animationFrame);
-      this.animationFrame = undefined;
-    }
+    this.isGliding = false;
+    document.body.classList.remove('is-wheel-scrolling');
+    if (this.animationFrame) cancelAnimationFrame(this.animationFrame);
   };
 
   ngAfterViewInit() {
     this.targetScrollY = window.scrollY;
     window.addEventListener('wheel', this.onWheel, { passive: false });
-    window.addEventListener('scroll', this.onNativeScroll, { passive: true });
-    window.addEventListener('portfolio:cancel-wheel-scroll', this.cancelSmoothScroll);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('portfolio:cancel-wheel-scroll', this.cancelGlide);
   }
 
   ngOnDestroy() {
     window.removeEventListener('wheel', this.onWheel);
-    window.removeEventListener('scroll', this.onNativeScroll);
-    window.removeEventListener('portfolio:cancel-wheel-scroll', this.cancelSmoothScroll);
-
-    this.cancelSmoothScroll();
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('portfolio:cancel-wheel-scroll', this.cancelGlide);
+    this.cancelGlide();
   }
 
-  private animateScroll = () => {
-    const currentScrollY = window.scrollY;
-    const distance = this.targetScrollY - currentScrollY;
-
+  private glide = () => {
+    const distance = this.targetScrollY - window.scrollY;
     if (Math.abs(distance) < 0.5) {
       window.scrollTo(0, this.targetScrollY);
-      this.isAnimating = false;
+      this.isGliding = false;
+      document.body.classList.remove('is-wheel-scrolling');
       return;
     }
 
-    window.scrollTo(0, currentScrollY + distance * 0.14);
-    this.animationFrame = requestAnimationFrame(this.animateScroll);
+    window.scrollTo(0, window.scrollY + distance * 0.16);
+    this.animationFrame = requestAnimationFrame(this.glide);
   };
-
-  private getWheelDelta(event: WheelEvent) {
-    // Wheel deltas are reported in pixels, lines, or pages depending on device.
-    if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) {
-      return event.deltaY * 16;
-    }
-
-    if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) {
-      return event.deltaY * window.innerHeight;
-    }
-
-    return event.deltaY;
-  }
 }

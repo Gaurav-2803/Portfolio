@@ -103,27 +103,54 @@
   &__role {
     display: flex;
     align-items: center;
-    gap: 0;
+    gap: 10px;
     font-family: var(--font-mono);
     font-size: clamp(1rem, 2vw, 1.3rem);
     color: var(--text-secondary);
     min-height: 2rem;
+    overflow: hidden;
   }
 
-  &__cursor-text {
+  &__role-label {
     color: var(--accent-cyan);
+    flex: 0 0 auto;
+    font-size: 0.78em;
   }
 
-  &__cursor {
-    color: var(--accent-cyan);
-    animation: blink 1s step-end infinite;
-    font-weight: 100;
-    margin-left: 1px;
+  &__role-viewport {
+    overflow: hidden;
+    flex: 1;
+    min-width: 0;
   }
 
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+  &__role-track {
+    position: relative;
+    height: 2rem;
+
+    span {
+      position: absolute;
+      inset: 0 auto auto 0;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: role-switch 15s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+      animation-delay: calc(var(--role-index) * 3s);
+    }
+  }
+
+  @keyframes role-switch {
+    0%, 2% {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    5%, 17% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    20%, 100% {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
   }
 
   &__description {
@@ -221,6 +248,14 @@
     svg {
       transition: transform 0.2s;
     }
+  }
+
+  &__gfg-icon {
+    font-family: var(--font-brand);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: -0.08em;
+    color: currentColor;
   }
 
   // Image section
@@ -417,6 +452,11 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero__role-track span { animation: none; }
+  .hero__role-track span:not(:first-child) { display: none; }
+}
+
 @media (max-width: 1024px) {
   .hero {
     &__container {
@@ -449,10 +489,57 @@
   }
 }
 
+@media (max-width: 600px) {
+  .hero {
+    min-height: auto;
+    padding-top: 72px;
+
+    &__container {
+      padding: 28px 18px 20px;
+      gap: 28px;
+    }
+
+    &__content { gap: 18px; }
+    &__greeting-text { font-size: 0.75rem; }
+    &__greeting-line { width: 28px; }
+    &__description { font-size: 0.94rem; }
+
+    &__actions {
+      width: 100%;
+      gap: 10px;
+    }
+
+    &__btn {
+      flex: 1 1 150px;
+      justify-content: center;
+      padding: 11px 16px !important;
+    }
+
+    &__image-ring--outer { width: min(78vw, 300px); height: min(78vw, 300px); }
+    &__image-ring--inner { width: min(64vw, 240px); height: min(64vw, 240px); }
+    &__image-container { width: min(54vw, 200px); height: min(54vw, 200px); }
+    &__badge { display: none; }
+
+    &__stats {
+      margin-top: 28px;
+      padding-top: 20px;
+    }
+
+    &__stats-container {
+      padding: 0 12px;
+      gap: 4px;
+    }
+
+    &__stat-item { padding: 12px 4px; }
+    &__stat-value { font-size: 1.5rem; }
+    &__stat-label { font-size: 0.64rem; letter-spacing: 0.02em; }
+  }
+}
+
 @media (max-width: 480px) {
   .hero {
     &__name { font-size: 2.5rem; }
-    &__badge { min-width: 150px; font-size: 0.75rem; }
-    &__badge--tcs, &__badge--aws { position: static; margin: 4px; }
+    &__role { font-size: 0.9rem; min-height: 1.5rem; }
+    &__stats-container { grid-template-columns: repeat(2, 1fr); gap: 0; }
   }
 }

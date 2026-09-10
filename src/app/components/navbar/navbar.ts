@@ -37,10 +37,9 @@ export class NavbarComponent implements OnInit {
     const el = document.querySelector(href);
 
     if (el) {
-      // A navigation click should take priority over an in-progress wheel glide.
       window.dispatchEvent(new Event('portfolio:cancel-wheel-scroll'));
-      const navbarOffset = 80;
-      const top = el.getBoundingClientRect().top + window.scrollY - navbarOffset;
+      const heading = el.querySelector('.section__header') ?? el;
+      const top = heading.getBoundingClientRect().top + window.scrollY - 72;
       window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
     }
   }

@@ -3,9 +3,9 @@
 
   &__layout {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
     gap: 48px;
-    align-items: start;
+    align-items: center;
   }
 
   // Bio Card
@@ -208,6 +208,7 @@
   .about {
     &__layout {
       grid-template-columns: 1fr;
+      align-items: start;
     }
 
     &__skills-grid {
@@ -226,8 +227,13 @@
 
 @media (max-width: 480px) {
   .about {
+    &__bio-card { padding: 22px 18px; }
+    &__highlight-item { align-items: flex-start; padding: 8px 10px; }
+    &__skills-title { font-size: 1.1rem; }
     &__skills-grid {
       grid-template-columns: 1fr;
     }
+
+    &__skill-card { padding: 16px; }
   }
 }

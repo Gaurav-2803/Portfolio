@@ -18,9 +18,9 @@
 
   &__layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 48px;
-    align-items: start;
+    align-items: center;
     position: relative;
     z-index: 1;
   }
@@ -94,6 +94,20 @@
       height: 20px;
       width: 20px;
     }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--link-color, var(--accent-cyan));
+    }
+  }
+
+  &__gfg-icon {
+    color: var(--link-color, var(--accent-cyan));
+    font-family: var(--font-brand);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: -0.08em;
   }
 
   &__email-btn {
@@ -215,6 +229,22 @@
   .contact {
     &__layout {
       grid-template-columns: 1fr;
+      align-items: start;
     }
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    &__cta-card { padding: 24px 18px; }
+    &__cta-title { font-size: 1.2rem; }
+    &__email-btn,
+    &__resume-btn { padding: 11px 16px; }
+  }
+
+  .contact-link-card {
+    &__inner { gap: 12px; padding: 14px; }
+    &__icon-wrapper { width: 38px; height: 38px; }
+    &__value { font-size: 0.82rem; }
   }
 }

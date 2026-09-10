@@ -18,12 +18,15 @@
       </h1>
 
       <div class="hero__role">
-        <span class="hero__cursor-text">{{ displayedText }}</span>
-        <span class="hero__cursor">|</span>
+        <!-- <span class="hero__role-label">Currently:</span> -->
+        <div class="hero__role-viewport" aria-label="Software Engineer at TCS, Full-Stack Developer, Cloud and DevOps Enthusiast, GFG Technical Writer, Problem Solver">
+          <div class="hero__role-track" aria-hidden="true">
+            <span *ngFor="let role of roles; let i = index" [style.--role-index]="i">{{ role }}</span>
+          </div>
+        </div>
       </div>
 
-      <p class="hero__description">
-        Software Engineer at <strong>TCS</strong> · Building scalable systems with
+      <p class="hero__description">Building scalable systems with
         <span class="highlight">Python</span>, <span class="highlight">Node JS</span>,
         <span class="highlight">Redis</span>, <span class="highlight">Kafka</span>,
         <span class="highlight">Angular</span>, <span class="highlight">Docker</span> &
@@ -64,9 +67,12 @@
           [id]="'hero-social-' + link.icon"
           rel="noopener noreferrer"
         >
-          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-            <path [attr.d]="link.svgPath" />
-          </svg>
+          <span *ngIf="link.icon === 'gfg'; else socialIcon" class="hero__gfg-icon" aria-hidden="true">GfG</span>
+          <ng-template #socialIcon>
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+              <path [attr.d]="link.svgPath" />
+            </svg>
+          </ng-template>
         </a>
       </div>
     </div>
@@ -76,7 +82,7 @@
       <div class="hero__image-ring hero__image-ring--outer"></div>
       <div class="hero__image-ring hero__image-ring--inner"></div>
       <div class="hero__image-container">
-        <img src="profile.jpg" alt="Gaurav Agrawal" class="hero__profile-img" loading="eager" />
+        <img src="profile-960.jpg" alt="Gaurav Agrawal" class="hero__profile-img" width="960" height="640" fetchpriority="high" decoding="async" />
         <div class="hero__image-overlay"></div>
       </div>
       <!-- Floating badges -->

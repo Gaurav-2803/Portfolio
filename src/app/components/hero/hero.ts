@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,13 +11,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   templateUrl: './hero.html',
   styleUrls: ['./hero.scss'],
 })
-export class HeroComponent implements OnInit, OnDestroy {
-  currentRoleIndex = 0;
-  displayedText = '';
-  isDeleting = false;
-  typingSpeed = 100;
-  private typingTimer: any;
-
+export class HeroComponent {
   roles = [
     'Software Engineer @ TCS',
     'Full-Stack Developer',
@@ -49,7 +43,7 @@ export class HeroComponent implements OnInit, OnDestroy {
         'M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z',
     },
     {
-      icon: 'article',
+      icon: 'gfg',
       label: 'GFG Articles',
       url: 'https://bit.ly/GFGarticles',
       svgPath:
@@ -63,37 +57,6 @@ export class HeroComponent implements OnInit, OnDestroy {
     { value: '300K+', label: 'Article Views' },
     { value: '10+', label: 'Total Projects Completed' },
   ];
-
-  ngOnInit() {
-    this.startTyping();
-  }
-
-  ngOnDestroy() {
-    if (this.typingTimer) clearTimeout(this.typingTimer);
-  }
-
-  startTyping() {
-    const currentRole = this.roles[this.currentRoleIndex];
-
-    if (!this.isDeleting) {
-      this.displayedText = currentRole.substring(0, this.displayedText.length + 1);
-      if (this.displayedText === currentRole) {
-        this.typingTimer = setTimeout(() => {
-          this.isDeleting = true;
-          this.startTyping();
-        }, 2000);
-        return;
-      }
-    } else {
-      this.displayedText = currentRole.substring(0, this.displayedText.length - 1);
-      if (this.displayedText === '') {
-        this.isDeleting = false;
-        this.currentRoleIndex = (this.currentRoleIndex + 1) % this.roles.length;
-      }
-    }
-
-    this.typingTimer = setTimeout(() => this.startTyping(), this.isDeleting ? 50 : 100);
-  }
 
   scrollToContact() {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });

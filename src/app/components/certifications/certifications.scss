@@ -280,3 +280,24 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .certifications {
+    &__layout { gap: 32px; }
+    &__col { gap: 16px; }
+  }
+
+  .cert-card {
+    &__inner { padding: 20px 16px; }
+    &__header { gap: 12px; }
+    &__logo { font-size: 2rem; }
+    &__name { font-size: 0.98rem; }
+    &__verify-btn { width: 100%; justify-content: center; }
+  }
+
+  .edu-card {
+    &__inner { padding: 20px 16px; }
+    &__header { gap: 12px; }
+    &__achievements { padding: 12px; }
+  }
+}
