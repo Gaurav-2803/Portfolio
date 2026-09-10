@@ -6,6 +6,9 @@ services:
 
     container_name: bygaurav-portfolio
 
+    mem_limit: 64m
+    cpus: 0.10
+    
     ports:
       - "80:80"
       - "443:443"
