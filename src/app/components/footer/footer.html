@@ -4,20 +4,19 @@
 
     <div class="footer__content">
       <!-- Logo -->
-      <div class="footer__logo">
+      <a class="footer__logo" href="#hero" (click)="scrollTo('hero', $event)">
         <span class="logo-bracket">&lt;</span>
         <span class="logo-name">GA</span>
         <span class="logo-bracket">/&gt;</span>
-      </div>
+      </a>
 
       <!-- Nav -->
       <nav class="footer__nav">
         <a
           *ngFor="let item of navItems"
           class="footer__nav-link"
-          (click)="scrollTo(item)"
-          role="button"
-          tabindex="0"
+          [href]="'#' + item.toLowerCase()"
+          (click)="scrollTo(item.toLowerCase(), $event)"
           [id]="'footer-nav-' + item.toLowerCase()"
         >
           {{ item }}

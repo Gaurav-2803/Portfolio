@@ -225,3 +225,15 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .experience {
+    &__timeline { padding-left: 28px; gap: 20px; }
+    &__timeline::before { left: 8px; }
+    &__dot { left: -26px; width: 24px; height: 24px; font-size: 0.7rem; top: 20px; }
+    &__card { padding: 18px 16px; }
+    &__role { font-size: 1.08rem; }
+    &__award { font-size: 0.7rem; padding: 4px 8px; }
+    &__highlight { font-size: 0.84rem; }
+  }
+}

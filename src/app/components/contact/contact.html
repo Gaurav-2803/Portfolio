@@ -57,7 +57,13 @@
             [id]="link.id"
           >
             <div class="contact-link-card__icon-wrapper">
-              <mat-icon>{{ link.icon }}</mat-icon>
+              <span *ngIf="link.icon === 'gfg'; else contactIcon" class="contact-link-card__gfg-icon" aria-hidden="true">GfG</span>
+              <ng-template #contactIcon>
+                <svg *ngIf="link.svgPath; else materialIcon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path [attr.d]="link.svgPath"></path>
+                </svg>
+                <ng-template #materialIcon><mat-icon>{{ link.icon }}</mat-icon></ng-template>
+              </ng-template>
             </div>
             <div class="contact-link-card__info">
               <span class="contact-link-card__label">{{ link.label }}</span>

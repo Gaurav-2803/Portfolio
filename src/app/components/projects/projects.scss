@@ -213,3 +213,17 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 480px) {
+  .projects {
+    &__cta { margin-top: 32px; }
+    &__github-btn { width: 100%; justify-content: center; }
+  }
+
+  .project-card {
+    &__inner { padding: 20px 16px; gap: 14px; }
+    &__title { font-size: 1.08rem; }
+    &__description { font-size: 0.84rem; }
+    &--featured::after { top: 12px; right: 12px; }
+  }
+}

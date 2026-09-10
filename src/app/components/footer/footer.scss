@@ -108,3 +108,12 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .footer {
+    &__container { padding: 0 16px 24px; }
+    &__divider { margin-bottom: 24px; }
+    &__nav { gap: 2px; }
+    &__nav-link { padding: 5px 7px; font-size: 0.72rem; }
+  }
+}
