@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import packageJson from '../../../../package.json';
 
 @Component({
   selector: 'app-footer',
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class FooterComponent {
   year = new Date().getFullYear();
+  version = packageJson.version;
   navItems = ['About', 'Experience', 'Projects', 'Certifications', 'Contact'];
 
   scrollTo(section: string, event?: MouseEvent) {
