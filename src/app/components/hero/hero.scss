@@ -518,6 +518,9 @@
     &__image-ring--outer { width: min(78vw, 300px); height: min(78vw, 300px); }
     &__image-ring--inner { width: min(64vw, 240px); height: min(64vw, 240px); }
     &__image-container { width: min(54vw, 200px); height: min(54vw, 200px); }
+    // The decorative rings extend beyond the image container; reserve room
+    // before the greeting so they do not visually collide on small screens.
+    &__image-wrapper { margin-bottom: 32px; }
     &__badge { display: none; }
 
     &__stats {
